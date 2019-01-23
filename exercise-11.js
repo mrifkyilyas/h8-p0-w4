@@ -4,39 +4,24 @@ function shoppingTime(memberId, money) {
     } else if (money<=15000) {
         return "Mohon maaf, uang tidak cukup"
     } else {
-        var obj = {}
-        var arrLists = []
-        var firstMoney = money
-        if(money>=1500000){
-            arrLists.push("Sepatu Stacattu")
-            money = money - 1500000
-        }
-        if(money>=500000){
-            arrLists.push("Baju Zoro ")
-            money = money - 500000
-        }
-        if(money>=250000){
-            arrLists.push("Baju H&N")
-            money = money - 250000
-        }
-        if(money>=175000){
-            arrLists.push("Sweater Uniklooh")
-            money = money - 175000
-        }
-        if(money>=50000){
-            arrLists.push("Casing Handphone")
-            money = money - 50000
-        }
-        obj["memberId"] = memberId,
-        obj["money"] = firstMoney,        
-        obj.listPurcased = arrLists,
-        obj.chargeMoney = money
-        
+        var lists =  [[ 'Sepatu Stacattu','1500000'],['Baju Zoro','500000'],['Baju H&N','250000'],['Sweater Uniklooh','175000'],['Casing Handphone','50000' ]]
+        obj = {}
+        obj["memberId"] = memberId
+        obj["money"] = money
+        obj["listPurchased"] = []
+        for( var i=0; i<lists.length; i++){
+            if(money>=lists[i][1]){
+                obj["listPurchased"].push(lists[i][0])
+                money = money - lists[i][1]
+            }
 
-        
-        console.log(obj)
+        }
+        obj["changeMoney"] = money
+
+
+
     }
-    return ''
+    return obj
 
          
   }
